@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>GoldenFields — Home</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    
+    <div class="brand" onclick="location.href='index.html'">
+      <img id="logo-img" src="assets/logo-light.svg" alt="GoldenFields" class="logo-img"/>
+      <h1 data-i18n="brand.name">GoldenFields</h1>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="marketplace.html">Marketplace</a>
+      <a href="community.html">Community</a>
+      <a href="learning.html">Learning Hub</a>
+      <a href="mandi.html">Mandi Locator</a>
+      <a href="auth.html" class="btn-small">Sign in</a>
+    </nav>
+
+    <div class="header-controls">
+      <label class="theme-switch">
+        <input id="theme-toggle" type="checkbox" />
+        <span class="slider"></span>
+      </label>
+
+      <select id="lang-select">
+        <option value="en">EN</option>
+        <option value="od">ଓଡ଼ିଆ</option>
+      </select>
+    </div>
+
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img class="hero-bg" src="assets/pexels-clickon38-30851646.jpg" alt="Hero Background"/>
+    <div class="overlay"></div>
+
+    <div class="container hero-content">
+      <div class="hero-badge">
+        🌱 <span data-i18n="hero.badge">Future of Farming is Here</span>
+      </div>
+
+      <h2 class="hero-title" data-i18n-html="hero.title">
+        Cultivating <span class="accent">Prosperity</span> Together
+      </h2>
+
+      <p class="hero-lead" data-i18n="hero.lead"></p>
+
+      <div class="hero-buttons">
+        <button class="btn btn-primary" onclick="location.href='marketplace.html'">
+          Explore Marketplace
+        </button>
+        <button class="btn btn-outline" onclick="location.href='auth.html'">
+          Join Community
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICES + WHY -->
+  <section class="section">
+    <div class="container grid grid-2">
+
+      <div class="card">
+        <h3 data-i18n="prices.title">Mandi Prices Today</h3>
+        <p class="muted" data-i18n="prices.subtitle"></p>
+        <div id="price-chart" class="price-chart"></div>
+        <div id="price-container" class="price-list"></div>
+      </div>
+
+      <div class="card why-card">
+        <h3 data-i18n="why.title">Why GoldenFields?</h3>
+        <ul>
+          <li data-i18n="why.secure"></li>
+          <li data-i18n="why.rates"></li>
+          <li data-i18n="why.ai"></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section section-accent">
+    <div class="container grid grid-2 align-center">
+
+      <div>
+        <img class="feature-img"
+          src="https://images.unsplash.com/photo-1506806732259-39c2d0268443?auto=format&fit=crop&w=1200&q=80" />
+
+        <div class="feature-quote" data-i18n="features.quote"></div>
+      </div>
+
+      <div>
+        <h2 data-i18n-html="features.title"></h2>
+        <p class="muted" data-i18n="features.lead"></p>
+
+        <button class="btn btn-primary mt-16"
+          onclick="location.href='marketplace.html'">
+          Start Selling →
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-bottom">
+    <div>© 2025 GoldenFields</div>
+    <div class="footer-links-inline">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/script.js"></script>
+<script src="js/theme-lang.js"></script>
+
+</body>
+</html>

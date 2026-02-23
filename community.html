@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+ <title>Community GoldenFields</title>
+ <meta name="description"
+ content="Connect with thousands of farmers, share knowledge, get expert advice on GoldenFields Community." />
+ <link rel="stylesheet" href="css/style.css" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+</head>
+
+<body>
+
+ <div class="page-loader" id="loader">
+ <div class="loader-inner">
+ <div class="loader-logo"></div>
+ <div class="loader-text">Community</div>
+ <div class="loader-bar">
+ <div class="loader-fill"></div>
+ </div>
+ </div>
+ </div>
+ <div class="toast" id="toast"></div>
+
+ <nav class="navbar scrolled" id="navbar">
+ <div class="container nav-inner">
+ <a href="index.html" class="nav-logo"><img src="assets/images/Picsart_26-02-23_14-32-02-036.png"
+ alt="GoldenFields Logo" class="nav-logo-img" /><span>GoldenFields</span></a>
+ <div class="nav-links">
+ <a href="index.html">Home</a><a href="marketplace.html">Marketplace</a>
+ <a href="ai.html">AI Assistant</a><a href="learning.html">Learn</a><a href="community.html"
+ class="active">Community</a>
+ </div>
+  <a href="login.html" class="btn btn-accent btn-sm" style="margin-left:12px;padding:10px 24px;font-weight:700;">Login</a>
+ <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+ </div>
+ </nav>
+ <div id="mobileMenu"
+ style="display:none;position:fixed;top:68px;left:0;right:0;background:var(--primary);z-index:999;padding:20px 24px;">
+ <a href="marketplace.html"
+ style="display:block;color:#fff;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-weight:600;">
+ Marketplace</a>
+ <a href="ai.html"
+ style="display:block;color:#fff;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-weight:600;">
+ AI Assistant</a>
+ <a href="learning.html"
+ style="display:block;color:#fff;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-weight:600;">
+ Learning Hub</a>
+ <a href="community.html" style="display:block;color:#fff;padding:10px 0;font-weight:600;"> Community</a>
+ </div>
+
+ <div class="page-banner">
+ <div class="container">
+ <h1> Farmer Community</h1>
+ <p>Connect · Share · Learn · Grow together with 500K+ farmers</p>
+ <div class="breadcrumb"><a href="index.html">Home</a> / Community</div>
+ </div>
+ </div>
+
+ <section class="section" style="padding:50px 0;">
+ <div class="container community-layout">
+
+ <!-- Main Feed -->
+ <div>
+ <!-- Post Form -->
+ <div class="post-form" data-aos="fade-up">
+ <h3> Share with the Community</h3>
+ <div class="form-group">
+ <input type="text" id="postAuthor" placeholder="Your name (e.g. Ramesh Kumar)" />
+ </div>
+ <div class="form-group">
+ <select id="postCategory">
+ <option value="question"> Question</option>
+ <option value="tip"> Farming Tip</option>
+ <option value="market"> Market Info</option>
+ <option value="success"> Success Story</option>
+ </select>
+ </div>
+ <div class="form-group">
+ <textarea id="postContent" rows="4"
+ placeholder="What's on your mind? Share a tip, ask a question, or tell your story..."></textarea>
+ </div>
+ <div style="display:flex;gap:10px;align-items:center;">
+ <button class="btn btn-primary" onclick="submitPost()"> Post to Community</button>
+ <span style="font-size:0.78rem;color:var(--text-mid);">Reach 500K+ farmers instantly</span>
+ </div>
+ </div>
+
+ <!-- Filter -->
+ <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;" data-aos="fade-up">
+ <button class="chip active" onclick="filterPosts('all',this)">All Posts</button>
+ <button class="chip" onclick="filterPosts('question',this)"> Questions</button>
+ <button class="chip" onclick="filterPosts('tip',this)"> Tips</button>
+ <button class="chip" onclick="filterPosts('market',this)"> Market</button>
+ <button class="chip" onclick="filterPosts('success',this)"> Success</button>
+ </div>
+
+ <!-- Posts Feed -->
+ <div id="postsFeed"></div>
+ </div>
+
+ <!-- Sidebar -->
+ <div>
+ <div class="sidebar-card">
+ <h3> Ask an Expert</h3>
+ <div class="form-group"><input type="text" id="expertName" placeholder="Your name" /></div>
+ <div class="form-group">
+ <select id="expertField">
+ <option>Soil & Fertilizers</option>
+ <option>Crop Diseases</option>
+ <option>Government Schemes</option>
+ <option>Water Management</option>
+ <option>Organic Farming</option>
+ </select>
+ </div>
+ <div class="form-group"><textarea id="expertQuestion" rows="3"
+ placeholder="Describe your problem..."></textarea></div>
+ <button class="btn btn-primary btn-sm" style="width:100%;" onclick="askExpert()"> Send to
+ Expert</button>
+ </div>
+
+ <div class="sidebar-card" style="margin-top:20px;">
+ <h3> Online Experts</h3>
+ <div id="expertList"></div>
+ </div>
+
+ <div class="sidebar-card" style="margin-top:20px;">
+ <h3> Top Contributors</h3>
+ <div id="topContributors"></div>
+ </div>
+
+ <div class="sidebar-card" style="margin-top:20px;">
+ <h3> Trending Topics</h3>
+ <div id="trendingTopics"></div>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+ <script src="js/main.js"></script>
+ <script src="js/community.js"></script>
+</body>
+
+</html>

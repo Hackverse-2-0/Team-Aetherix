@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+ <title>Learning Hub GoldenFields</title>
+ <meta name="description"
+ content="Learn modern farming techniques, government schemes, smart irrigation and more. Earn certificates at GoldenFields Learning Hub." />
+ <link rel="stylesheet" href="css/style.css" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+</head>
+
+<body>
+
+ <div class="page-loader" id="loader">
+ <div class="loader-inner">
+ <div class="loader-logo"></div>
+ <div class="loader-text">Learning Hub</div>
+ <div class="loader-bar">
+ <div class="loader-fill"></div>
+ </div>
+ </div>
+ </div>
+ <div class="toast" id="toast"></div>
+
+ <nav class="navbar scrolled" id="navbar">
+ <div class="container nav-inner">
+ <a href="index.html" class="nav-logo"><img src="assets/images/Picsart_26-02-23_14-32-02-036.png"
+ alt="GoldenFields Logo" class="nav-logo-img" /><span>GoldenFields</span></a>
+ <div class="nav-links">
+ <a href="index.html">Home</a><a href="marketplace.html">Marketplace</a>
+ <a href="ai.html">AI Assistant</a><a href="learning.html" class="active">Learn</a><a
+ href="community.html">Community</a>
+ </div>
+  <a href="login.html" class="btn btn-accent btn-sm" style="margin-left:12px;padding:10px 24px;font-weight:700;">Login</a>
+ <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+ </div>
+ </nav>
+ <div id="mobileMenu"
+ style="display:none;position:fixed;top:68px;left:0;right:0;background:var(--primary);z-index:999;padding:20px 24px;">
+ <a href="marketplace.html"
+ style="display:block;color:#fff;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-weight:600;">
+ Marketplace</a>
+ <a href="ai.html"
+ style="display:block;color:#fff;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-weight:600;">
+ AI Assistant</a>
+ <a href="learning.html"
+ style="display:block;color:#fff;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-weight:600;">
+ Learning Hub</a>
+ <a href="community.html" style="display:block;color:#fff;padding:10px 0;font-weight:600;"> Community</a>
+ </div>
+
+ <div class="page-banner">
+ <div class="container">
+ <h1> Learning Hub</h1>
+ <p>Free courses · Government schemes · Smart farming · Earn certificates</p>
+ <div class="breadcrumb"><a href="index.html">Home</a> / Learning Hub</div>
+ </div>
+ </div>
+
+ <!-- Stats Bar -->
+ <div style="background:#fff;padding:20px 0;border-bottom:1px solid #eee;">
+ <div class="container" style="display:flex;gap:40px;flex-wrap:wrap;justify-content:center;">
+ <div style="text-align:center;"><strong style="color:var(--primary);font-size:1.4rem;">24+</strong>
+ <div style="font-size:0.8rem;color:var(--text-mid);">Courses Available</div>
+ </div>
+ <div style="text-align:center;"><strong style="color:var(--primary);font-size:1.4rem;">50K+</strong>
+ <div style="font-size:0.8rem;color:var(--text-mid);">Happy Learners</div>
+ </div>
+ <div style="text-align:center;"><strong style="color:var(--primary);font-size:1.4rem;">100%</strong>
+ <div style="font-size:0.8rem;color:var(--text-mid);">Free Access</div>
+ </div>
+ <div style="text-align:center;"><strong style="color:var(--primary);font-size:1.4rem;"></strong>
+ <div style="font-size:0.8rem;color:var(--text-mid);">Verified Certificates</div>
+ </div>
+ </div>
+ </div>
+
+ <section class="section" style="padding:50px 0;">
+ <div class="container">
+
+ <!-- Filter Tabs -->
+ <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;" data-aos="fade-up">
+ <button class="chip active" onclick="filterCourses('all',this)">All Courses</button>
+ <button class="chip" onclick="filterCourses('free',this)"> Free</button>
+ <button class="chip" onclick="filterCourses('govt',this)"> Govt Schemes</button>
+ <button class="chip" onclick="filterCourses('advanced',this)"> Advanced</button>
+ </div>
+
+ <div class="course-grid" id="courseGrid"></div>
+ </div>
+ </section>
+
+ <!-- Course Detail Modal -->
+ <div class="modal-overlay" id="courseModal">
+ <div class="modal-box" style="max-width:640px;">
+ <div class="modal-close" onclick="closeModal('courseModal')"></div>
+ <div id="courseModuleContent"></div>
+ </div>
+ </div>
+
+ <!-- Quiz Modal -->
+ <div class="modal-overlay quiz-modal" id="quizModal">
+ <div class="modal-box quiz-box">
+ <div class="modal-close" onclick="closeModal('quizModal')"></div>
+ <div id="quizContent"></div>
+ </div>
+ </div>
+
+ <!-- Certificate Modal -->
+ <div class="modal-overlay" id="certModal">
+ <div class="modal-box" style="max-width:500px;text-align:center;">
+ <div class="modal-close" onclick="closeModal('certModal')"></div>
+ <div style="font-size:3.5rem;margin-bottom:12px;"></div>
+ <h2 style="color:var(--primary);margin-bottom:6px;">Certificate Earned!</h2>
+ <p style="color:var(--text-mid);margin-bottom:24px;font-size:0.92rem;">Congratulations! You have
+ successfully completed the course.</p>
+ <div
+ style="background:linear-gradient(135deg,#fff8e1,#fff3cd);border:3px solid var(--accent);border-radius:16px;padding:28px;margin-bottom:24px;">
+ <div style="font-size:1rem;color:var(--text-mid);margin-bottom:6px;">This certifies that</div>
+ <div id="certName"
+ style="font-size:1.5rem;font-weight:800;color:var(--primary);font-family:'Poppins',sans-serif;margin-bottom:6px;">
+ Farmer</div>
+ <div style="font-size:0.9rem;color:var(--text-mid);margin-bottom:8px;">has successfully completed</div>
+ <div id="certCourse"
+ style="font-size:1.1rem;font-weight:700;color:var(--secondary);margin-bottom:16px;"></div>
+ <div style="font-size:0.8rem;color:var(--text-mid);">Issued by GoldenFields · 2025</div>
+ </div>
+ <button class="btn btn-primary" style="width:100%;" onclick="closeModal('certModal')"> Share
+ Certificate</button>
+ </div>
+ </div>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+ <script src="js/main.js"></script>
+ <script src="js/learning.js"></script>
+</body>
+
+</html>

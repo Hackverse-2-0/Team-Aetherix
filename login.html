@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Login - GoldenFields</title>
+    <meta name="description"
+        content="Login or register as a Farmer or Buyer on GoldenFields - India's First Complete Agri Ecosystem." />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0F3D2E 0%, #1a5c45 45%, #2d7a52 100%);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ---- Navbar ---- */
+        .login-nav {
+            padding: 16px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .login-nav .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .login-nav .brand img {
+            height: 38px;
+            width: 38px;
+            object-fit: contain;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 3px;
+        }
+
+        .login-nav .brand span {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .login-nav .back-btn {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .login-nav .back-btn:hover {
+            color: #F4A261;
+        }
+
+        /* ---- Main layout ---- */
+        .login-main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .login-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            max-width: 960px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.4);
+        }
+
+        /* ---- Left panel ---- */
+        .login-panel-left {
+            background: linear-gradient(160deg, rgba(244, 162, 97, 0.15), rgba(58, 125, 68, 0.2));
+            padding: 56px 44px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .login-panel-left .logo-big img {
+            height: 80px;
+            width: 80px;
+            object-fit: contain;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 8px;
+            margin-bottom: 28px;
+        }
+
+        .login-panel-left h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .login-panel-left h2 span {
+            color: #F4A261;
+        }
+
+        .login-panel-left p {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.78);
+            font-size: 0.88rem;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .feature-list li:last-child {
+            border: none;
+        }
+
+        .feature-list li .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #F4A261;
+            flex-shrink: 0;
+        }
+
+        /* ---- Right panel (form) ---- */
+        .login-panel-right {
+            padding: 48px 44px;
+            background: rgba(255, 255, 255, 0.97);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Role tabs */
+        .role-tabs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: #f5f5f5;
+            border-radius: 12px;
+            padding: 4px;
+            gap: 4px;
+            margin-bottom: 32px;
+        }
+
+        .role-tab {
+            padding: 12px 0;
+            text-align: center;
+            border-radius: 9px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.92rem;
+            color: #666;
+            transition: all 0.25s ease;
+            border: none;
+            background: transparent;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .role-tab.active {
+            background: #fff;
+            color: #0F3D2E;
+            box-shadow: 0 2px 12px rgba(15, 61, 46, 0.15);
+        }
+
+        .role-tab .tab-icon {
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        /* Auth tabs (login / register) */
+        .auth-tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 28px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .auth-tab {
+            padding: 8px 20px 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #999;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s;
+        }
+
+        .auth-tab.active {
+            color: #0F3D2E;
+            border-bottom-color: #0F3D2E;
+        }
+
+        /* Form */
+        .form-section {
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        .field-group {
+            margin-bottom: 18px;
+        }
+
+        .field-group label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 6px;
+        }
+
+        .field-group input,
+        .field-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 0.92rem;
+            font-family: 'Inter', sans-serif;
+            color: #1a1a1a;
+            background: #fafafa;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .field-group input:focus,
+        .field-group select:focus {
+            border-color: #3A7D44;
+            box-shadow: 0 0 0 3px rgba(58, 125, 68, 0.1);
+            background: #fff;
+        }
+
+        .field-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #0F3D2E, #3A7D44);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 18px rgba(15, 61, 46, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(15, 61, 46, 0.4);
+        }
+
+        .submit-btn.buyer-btn {
+            background: linear-gradient(135deg, #F4A261, #e08c4a);
+            box-shadow: 0 4px 18px rgba(244, 162, 97, 0.35);
+        }
+
+        .submit-btn.buyer-btn:hover {
+            box-shadow: 0 8px 28px rgba(244, 162, 97, 0.5);
+        }
+
+        .divider {
+            text-align: center;
+            margin: 18px 0;
+            font-size: 0.8rem;
+            color: #bbb;
+            position: relative;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 42%;
+            height: 1px;
+            background: #eee;
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .forgot-link {
+            text-align: right;
+            margin-top: -10px;
+            margin-bottom: 16px;
+        }
+
+        .forgot-link a {
+            font-size: 0.8rem;
+            color: #3A7D44;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .forgot-link a:hover {
+            text-decoration: underline;
+        }
+
+        .form-note {
+            text-align: center;
+            font-size: 0.78rem;
+            color: #aaa;
+            margin-top: 16px;
+        }
+
+        /* Success toast */
+        .login-toast {
+            position: fixed;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            background: #0F3D2E;
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+            opacity: 0;
+            transition: all 0.4s ease;
+            white-space: nowrap;
+            z-index: 9999;
+        }
+
+        .login-toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .login-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .login-panel-left {
+                display: none;
+            }
+
+            .login-panel-right {
+                padding: 36px 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="login-nav">
+        <a href="index.html" class="brand">
+            <img src="assets/images/Picsart_26-02-23_14-32-02-036.png" alt="GoldenFields Logo" />
+            <span>GoldenFields</span>
+        </a>
+        <a href="index.html" class="back-btn">&#8592; Back to Home</a>
+    </nav>
+
+    <!-- Main -->
+    <div class="login-main">
+        <div class="login-wrapper">
+
+            <!-- Left Info Panel -->
+            <div class="login-panel-left">
+                <div class="logo-big">
+                    <img src="assets/images/Picsart_26-02-23_14-32-02-036.png" alt="GoldenFields" />
+                </div>
+                <h2>Welcome to <span>GoldenFields</span></h2>
+                <p>India's first complete agri ecosystem - connecting farmers directly with buyers, knowledge, and
+                    technology.</p>
+                <ul class="feature-list">
+                    <li><span class="dot"></span> Direct farm-to-buyer trading</li>
+                    <li><span class="dot"></span> AI-powered crop advisory</li>
+                    <li><span class="dot"></span> Live market price tracking</li>
+                    <li><span class="dot"></span> Government scheme updates</li>
+                    <li><span class="dot"></span> Free learning & certification</li>
+                    <li><span class="dot"></span> Farmer community network</li>
+                </ul>
+            </div>
+
+            <!-- Right Form Panel -->
+            <div class="login-panel-right">
+
+                <!-- Role Selector -->
+                <div class="role-tabs" id="roleTabs">
+                    <button class="role-tab active" id="farmerTab" onclick="setRole('farmer')">
+                        <span class="tab-icon">&#127806;</span>
+                        Login as Farmer
+                    </button>
+                    <button class="role-tab" id="buyerTab" onclick="setRole('buyer')">
+                        <span class="tab-icon">&#127978;</span>
+                        Login as Buyer
+                    </button>
+                </div>
+
+                <!-- Auth Tabs -->
+                <div class="auth-tabs">
+                    <button class="auth-tab active" id="loginTab" onclick="setAuthTab('login')">Sign In</button>
+                    <button class="auth-tab" id="registerTab" onclick="setAuthTab('register')">Create Account</button>
+                </div>
+
+                <!-- LOGIN FORM -->
+                <div class="form-section active" id="loginForm">
+                    <div class="field-group">
+                        <label>Mobile Number / Email</label>
+                        <input type="text" id="loginId" placeholder="Enter mobile or email" />
+                    </div>
+                    <div class="field-group">
+                        <label>Password</label>
+                        <input type="password" id="loginPass" placeholder="Enter your password" />
+                    </div>
+                    <div class="forgot-link"><a href="#">Forgot password?</a></div>
+                    <button class="submit-btn" id="loginBtn" onclick="handleLogin()">Sign In as Farmer</button>
+                    <div class="form-note">Don't have an account? <a href="#" onclick="setAuthTab('register')"
+                            style="color:#3A7D44;font-weight:600;">Register here</a></div>
+                </div>
+
+                <!-- REGISTER FORM -->
+                <div class="form-section" id="registerForm">
+                    <div class="field-row">
+                        <div class="field-group">
+                            <label>First Name</label>
+                            <input type="text" id="regFirstName" placeholder="First name" />
+                        </div>
+                        <div class="field-group">
+                            <label>Last Name</label>
+                            <input type="text" id="regLastName" placeholder="Last name" />
+                        </div>
+                    </div>
+                    <div class="field-group">
+                        <label>Mobile Number</label>
+                        <input type="tel" id="regMobile" placeholder="10-digit mobile number" />
+                    </div>
+                    <div class="field-group">
+                        <label>Email Address</label>
+                        <input type="email" id="regEmail" placeholder="your@email.com" />
+                    </div>
+                    <div class="field-group" id="farmerFields">
+                        <label>State / District</label>
+                        <select id="regState">
+                            <option value="">Select your state</option>
+                            <option>Odisha</option>
+                            <option>Uttar Pradesh</option>
+                            <option>Maharashtra</option>
+                            <option>Punjab</option>
+                            <option>Bihar</option>
+                            <option>Karnataka</option>
+                            <option>Rajasthan</option>
+                            <option>Andhra Pradesh</option>
+                            <option>Madhya Pradesh</option>
+                        </select>
+                    </div>
+                    <div class="field-group" id="buyerOrgField" style="display:none;">
+                        <label>Organisation / Company Name</label>
+                        <input type="text" id="regCompany" placeholder="Company or business name" />
+                    </div>
+                    <div class="field-group">
+                        <label>Password</label>
+                        <input type="password" id="regPass" placeholder="Create a strong password" />
+                    </div>
+                    <button class="submit-btn" id="registerBtn" onclick="handleRegister()">Create Farmer
+                        Account</button>
+                    <div class="form-note">Already have an account? <a href="#" onclick="setAuthTab('login')"
+                            style="color:#3A7D44;font-weight:600;">Sign in</a></div>
+                </div>
+
+            </div><!-- end right panel -->
+        </div>
+    </div>
+
+    <div class="login-toast" id="loginToast"></div>
+
+    <script>
+        const API = 'http://localhost:5000';
+        let currentRole = 'farmer';
+
+        function setRole(role) {
+            currentRole = role;
+            const isFarmer = role === 'farmer';
+            document.getElementById('farmerTab').classList.toggle('active', isFarmer);
+            document.getElementById('buyerTab').classList.toggle('active', !isFarmer);
+            document.getElementById('farmerFields').style.display = isFarmer ? 'block' : 'none';
+            document.getElementById('buyerOrgField').style.display = isFarmer ? 'none' : 'block';
+            const loginBtn = document.getElementById('loginBtn');
+            const registerBtn = document.getElementById('registerBtn');
+            loginBtn.textContent = isFarmer ? 'Sign In as Farmer' : 'Sign In as Buyer';
+            registerBtn.textContent = isFarmer ? 'Create Farmer Account' : 'Create Buyer Account';
+            loginBtn.classList.toggle('buyer-btn', !isFarmer);
+            registerBtn.classList.toggle('buyer-btn', !isFarmer);
+        }
+
+        function setAuthTab(tab) {
+            document.getElementById('loginTab').classList.toggle('active', tab === 'login');
+            document.getElementById('registerTab').classList.toggle('active', tab === 'register');
+            document.getElementById('loginForm').classList.toggle('active', tab === 'login');
+            document.getElementById('registerForm').classList.toggle('active', tab === 'register');
+        }
+
+        function showToast(msg, isError = false) {
+            const t = document.getElementById('loginToast');
+            t.textContent = msg;
+            t.style.background = isError ? '#c62828' : '#0F3D2E';
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 3500);
+        }
+
+        function setLoading(btnId, loading) {
+            const btn = document.getElementById(btnId);
+            btn.disabled = loading;
+            btn.style.opacity = loading ? '0.7' : '1';
+            btn.textContent = loading ? 'Please wait...' : (btnId === 'loginBtn'
+                ? (currentRole === 'farmer' ? 'Sign In as Farmer' : 'Sign In as Buyer')
+                : (currentRole === 'farmer' ? 'Create Farmer Account' : 'Create Buyer Account'));
+        }
+
+        async function handleLogin() {
+            const uid = document.getElementById('loginId').value.trim();
+            const pass = document.getElementById('loginPass').value.trim();
+            if (!uid || !pass) { showToast('Please fill in all fields', true); return; }
+
+            setLoading('loginBtn', true);
+            try {
+                // Save/update role in DB
+                const res = await fetch(`${API}/saveUser`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ uid, role: currentRole })
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Login failed');
+
+                // Store in localStorage for session
+                localStorage.setItem('gf_user', JSON.stringify({ uid, role: currentRole }));
+                showToast('Welcome back! Redirecting...');
+                setTimeout(() => window.location.href = 'marketplace.html', 1600);
+            } catch (err) {
+                showToast('Server error: ' + err.message, true);
+            } finally {
+                setLoading('loginBtn', false);
+            }
+        }
+
+        async function handleRegister() {
+            const firstName = document.getElementById('regFirstName').value.trim();
+            const lastName = document.getElementById('regLastName').value.trim();
+            const mobile = document.getElementById('regMobile').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const pass = document.getElementById('regPass').value.trim();
+            const state = document.getElementById('regState')?.value || '';
+            const company = document.getElementById('regCompany')?.value.trim() || '';
+
+            if (!firstName || !mobile || !email || !pass) {
+                showToast('Please fill in all required fields', true); return;
+            }
+            if (mobile.length !== 10 || isNaN(mobile)) {
+                showToast('Enter a valid 10-digit mobile number', true); return;
+            }
+
+            setLoading('registerBtn', true);
+            try {
+                const uid = email || mobile;
+                const name = `${firstName} ${lastName}`.trim();
+                const res = await fetch(`${API}/saveUser`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ uid, role: currentRole, name, mobile, email, state, company })
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Registration failed');
+
+                localStorage.setItem('gf_user', JSON.stringify({ uid, role: currentRole, name }));
+                showToast('Account created! Welcome to GoldenFields!');
+                setTimeout(() => window.location.href = 'marketplace.html', 1600);
+            } catch (err) {
+                showToast('Server error: ' + err.message, true);
+            } finally {
+                setLoading('registerBtn', false);
+            }
+        }
+    </script>
+</body>
+
+</html>

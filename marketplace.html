@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+ <title>Marketplace GoldenFields</title>
+ <meta name="description"
+ content="Buy and sell crops directly on GoldenFields marketplace. No middlemen, full price transparency." />
+ <link rel="stylesheet" href="css/style.css" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+</head>
+
+<body>
+
+ <div class="page-loader" id="loader">
+ <div class="loader-inner">
+ <div class="loader-logo"></div>
+ <div class="loader-text">Marketplace</div>
+ <div class="loader-bar">
+ <div class="loader-fill"></div>
+ </div>
+ </div>
+ </div>
+ <div class="toast" id="toast"></div>
+
+ <nav class="navbar scrolled" id="navbar">
+ <div class="container nav-inner">
+ <a href="index.html" class="nav-logo"><img src="assets/images/Picsart_26-02-23_14-32-02-036.png"
+ alt="GoldenFields Logo" class="nav-logo-img" /><span>GoldenFields</span></a>
+ <div class="nav-links">
+ <a href="index.html">Home</a>
+ <a href="marketplace.html" class="active">Marketplace</a>
+ <a href="ai.html">AI Assistant</a>
+ <a href="learning.html">Learn</a>
+ <a href="community.html">Community</a>
+ </div>
+ <div class="nav-cta">
+ <button class="btn btn-accent btn-sm" onclick="openPostModal()">+ Post Crop</button>
+ </div>
+  <a href="login.html" class="btn btn-accent btn-sm" style="margin-left:12px;padding:10px 24px;font-weight:700;">Login</a>
+ <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+ </div>
+ </nav>
+ <div id="mobileMenu"
+ style="display:none;position:fixed;top:68px;left:0;right:0;background:var(--primary);z-index:999;padding:20px 24px;">
+ <a href="index.html"
+ style="display:block;color:#fff;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-weight:600;">
+ Home</a>
+ <a href="marketplace.html"
+ style="display:block;color:#fff;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-weight:600;">
+ Marketplace</a>
+ <a href="ai.html"
+ style="display:block;color:#fff;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-weight:600;">
+ AI Assistant</a>
+ <a href="learning.html"
+ style="display:block;color:#fff;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-weight:600;">
+ Learning Hub</a>
+ <a href="community.html" style="display:block;color:#fff;padding:10px 0;font-weight:600;"> Community</a>
+ </div>
+
+ <!-- Banner -->
+ <div class="page-banner">
+ <div class="container">
+ <h1> Farmer Marketplace</h1>
+ <p>Direct farm-to-buyer trading · Zero middlemen · Live prices</p>
+ <div class="breadcrumb"><a href="index.html">Home</a> / Marketplace</div>
+ </div>
+ </div>
+
+ <!-- Main Content -->
+ <section class="section" style="padding:50px 0;">
+ <div class="container">
+ <!-- Filter Bar -->
+ <div class="filter-bar" data-aos="fade-down">
+ <input type="text" id="searchInput" placeholder=" Search crops, location..."
+ oninput="renderCrops()" />
+ <select id="filterCrop" onchange="renderCrops()">
+ <option value="">All Crops</option>
+ <option>Rice</option>
+ <option>Wheat</option>
+ <option>Tomato</option>
+ <option>Cotton</option>
+ <option>Sugarcane</option>
+ <option>Maize</option>
+ <option>Potato</option>
+ <option>Onion</option>
+ </select>
+ <select id="filterState" onchange="renderCrops()">
+ <option value="">All States</option>
+ <option>Odisha</option>
+ <option>Uttar Pradesh</option>
+ <option>Maharashtra</option>
+ <option>Punjab</option>
+ <option>Bihar</option>
+ <option>Karnataka</option>
+ </select>
+ <select id="filterSort" onchange="renderCrops()">
+ <option value="">Sort By</option>
+ <option value="price-asc">Price </option>
+ <option value="price-desc">Price </option>
+ <option value="newest">Newest First</option>
+ </select>
+ <button class="btn btn-accent btn-sm" onclick="openPostModal()">+ Post Crop</button>
+ </div>
+
+ <!-- Crop Grid -->
+ <div id="cropGrid" class="crop-grid"></div>
+ <div id="emptyState" class="empty-state" style="display:none;">
+ <div class="icon"></div>
+ <h3>No crops found</h3>
+ <p>Try different filters or post your crop to start selling!</p>
+ <button class="btn btn-primary" style="margin-top:16px;" onclick="openPostModal()">Post Your
+ Crop</button>
+ </div>
+ </div>
+ </section>
+
+ <!-- POST CROP MODAL -->
+ <div class="modal-overlay" id="postModal">
+ <div class="modal-box">
+ <div class="modal-close" onclick="closeModal('postModal')"></div>
+ <h2 style="color:var(--primary);margin-bottom:8px;"> Post Your Crop</h2>
+ <p style="color:var(--text-mid);font-size:0.87rem;margin-bottom:24px;">Fill in details to list your produce
+ on the marketplace.</p>
+ <div class="form-group"><label>Farmer Name</label><input type="text" id="p_name"
+ placeholder="Your full name" /></div>
+ <div class="form-group"><label>Crop Type</label>
+ <select id="p_crop">
+ <option>Rice</option>
+ <option>Wheat</option>
+ <option>Tomato</option>
+ <option>Cotton</option>
+ <option>Sugarcane</option>
+ <option>Maize</option>
+ <option>Potato</option>
+ <option>Onion</option>
+ </select>
+ </div>
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+ <div class="form-group"><label>Quantity (Quintals)</label><input type="number" id="p_qty"
+ placeholder="e.g. 25" /></div>
+ <div class="form-group"><label>Price ( /qtl)</label><input type="number" id="p_price"
+ placeholder="e.g. 1800" /></div>
+ </div>
+ <div class="form-group"><label>Location (District, State)</label><input type="text" id="p_location"
+ placeholder="e.g. Puri, Odisha" /></div>
+ <div class="form-group"><label>Quality Grade</label>
+ <select id="p_grade">
+ <option>Grade A (Premium)</option>
+ <option>Grade B (Standard)</option>
+ <option>Grade C (Basic)</option>
+ </select>
+ </div>
+ <div class="form-group"><label>Description</label><textarea id="p_desc" rows="3"
+ placeholder="Add details about your produce..."></textarea></div>
+ <button class="btn btn-primary" style="width:100%;" onclick="postCrop()"> List on Marketplace</button>
+ </div>
+ </div>
+
+ <!-- BUY MODAL -->
+ <div class="modal-overlay" id="buyModal">
+ <div class="modal-box" style="max-width:420px;text-align:center;">
+ <div class="modal-close" onclick="closeModal('buyModal')"></div>
+ <div style="font-size:3rem;margin-bottom:12px;"></div>
+ <h2 style="color:var(--primary);margin-bottom:8px;">Order Confirmed!</h2>
+ <p id="buyDetails" style="color:var(--text-mid);margin-bottom:20px;"></p>
+ <div style="background:#e8f5e9;border-radius:12px;padding:16px 20px;text-align:left;margin-bottom:20px;">
+ <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span>Order ID</span><strong
+ id="orderId" style="color:var(--primary);"></strong></div>
+ <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span>Estimated
+ Delivery</span><strong>3-5 Business Days</strong></div>
+ <div style="display:flex;justify-content:space-between;"><span>Payment</span><strong
+ style="color:#2e7d32;"> Secure Escrow</strong></div>
+ </div>
+ <button class="btn btn-primary" style="width:100%;" onclick="closeModal('buyModal')">View My Orders</button>
+ </div>
+ </div>
+
+ <!-- TRACEABILITY MODAL -->
+ <div class="modal-overlay" id="traceModal">
+ <div class="modal-box">
+ <div class="modal-close" onclick="closeModal('traceModal')"></div>
+ <h2 style="color:var(--primary);margin-bottom:6px;"> Crop Traceability</h2>
+ <p style="color:var(--text-mid);font-size:0.87rem;margin-bottom:20px;">Full farm-to-fork journey verified on
+ blockchain.</p>
+ <div class="qr-box">
+ <div class="qr-placeholder" id="traceQR"></div>
+ <p style="font-size:0.82rem;color:var(--text-mid);margin-bottom:20px;">Scan QR to verify authenticity
+ </p>
+ </div>
+ <div class="trace-steps" id="traceSteps"></div>
+ </div>
+ </div>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+ <script src="js/main.js"></script>
+ <script src="js/marketplace.js"></script>
+</body>
+
+</html>

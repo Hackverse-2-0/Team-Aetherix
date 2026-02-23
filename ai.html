@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+ <title>AI Assistant GoldenFields</title>
+ <meta name="description"
+ content="Ask Krishi AI your multilingual agricultural advisor powered by AI for crop advice, price prediction, and disease diagnosis." />
+ <link rel="stylesheet" href="css/style.css" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+</head>
+
+<body>
+
+ <div class="page-loader" id="loader">
+ <div class="loader-inner">
+ <div class="loader-logo"></div>
+ <div class="loader-text">Krishi AI</div>
+ <div class="loader-bar">
+ <div class="loader-fill"></div>
+ </div>
+ </div>
+ </div>
+ <div class="toast" id="toast"></div>
+
+ <nav class="navbar scrolled" id="navbar">
+ <div class="container nav-inner">
+ <a href="index.html" class="nav-logo"><img src="assets/images/Picsart_26-02-23_14-32-02-036.png"
+ alt="GoldenFields Logo" class="nav-logo-img" /><span>GoldenFields</span></a>
+ <div class="nav-links">
+ <a href="index.html">Home</a>
+ <a href="marketplace.html">Marketplace</a>
+ <a href="ai.html" class="active">AI Assistant</a>
+ <a href="learning.html">Learn</a>
+ <a href="community.html">Community</a>
+ </div>
+  <a href="login.html" class="btn btn-accent btn-sm" style="margin-left:12px;padding:10px 24px;font-weight:700;">Login</a>
+ <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+ </div>
+ </nav>
+ <div id="mobileMenu"
+ style="display:none;position:fixed;top:68px;left:0;right:0;background:var(--primary);z-index:999;padding:20px 24px;">
+ <a href="index.html"
+ style="display:block;color:#fff;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-weight:600;">
+ Home</a>
+ <a href="marketplace.html"
+ style="display:block;color:#fff;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-weight:600;">
+ Marketplace</a>
+ <a href="ai.html"
+ style="display:block;color:#fff;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-weight:600;">
+ AI Assistant</a>
+ <a href="learning.html"
+ style="display:block;color:#fff;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-weight:600;">
+ Learning Hub</a>
+ <a href="community.html" style="display:block;color:#fff;padding:10px 0;font-weight:600;"> Community</a>
+ </div>
+
+ <div class="page-banner">
+ <div class="container">
+ <h1> Krishi AI Assistant</h1>
+ <p>Voice-enabled · Multilingual · Smart crop advisory · 24/7 available</p>
+ <div class="breadcrumb"><a href="index.html">Home</a> / AI Assistant</div>
+ </div>
+ </div>
+
+ <section class="section" style="padding:50px 0;">
+ <div class="container">
+ <div style="display:grid;grid-template-columns:1fr 320px;gap:32px;align-items:start;" id="aiLayout">
+
+ <!-- Chat -->
+ <div class="chat-container" data-aos="fade-right">
+ <div class="chat-header">
+ <div class="chat-avatar"></div>
+ <div class="chat-info">
+ <strong>Krishi AI</strong>
+ <span>Agricultural Intelligence Assistant</span>
+ </div>
+ <div class="chat-status"></div>
+ </div>
+ <div class="chat-controls">
+ <div class="lang-toggle" id="langToggle">
+ <button class="active" onclick="setLang('en',this)">English</button>
+ <button onclick="setLang('hi',this)">हिंदी</button>
+ <button onclick="setLang('or',this)">ଓଡ଼ିଆ</button>
+ </div>
+ <span style="font-size:0.78rem;color:var(--text-mid);margin-left:auto;"> Voice input
+ available</span>
+ </div>
+ <div class="chat-messages" id="chatMessages">
+ <!-- welcome message injected by JS -->
+ </div>
+ <div class="quick-chips" id="quickChips"></div>
+ <div class="chat-input-area">
+ <button class="voice-btn" id="voiceBtn" onclick="toggleVoice()" title="Voice Input"></button>
+ <input type="text" class="chat-input" id="chatInput"
+ placeholder="Ask about crops, prices, diseases..." onkeypress="handleKey(event)" />
+ <button class="send-btn" onclick="sendMessage()"></button>
+ </div>
+ </div>
+
+ <!-- Sidebar -->
+ <div data-aos="fade-left">
+ <div class="sidebar-card" style="margin-bottom:20px;">
+ <h3> Live Crop Prices</h3>
+ <div id="liveprices"></div>
+ </div>
+ <div class="sidebar-card" style="margin-bottom:20px;">
+ <h3> Disease Detector</h3>
+ <p style="font-size:0.82rem;color:var(--text-mid);margin-bottom:14px;">Describe symptoms to get
+ diagnosis</p>
+ <div class="form-group">
+ <select id="diseaseSymptom" style="font-size:0.85rem;">
+ <option value="">Select Symptom</option>
+ <option value="yellow_leaves">Yellow leaves</option>
+ <option value="brown_spots">Brown spots on leaves</option>
+ <option value="wilting">Plant wilting</option>
+ <option value="white_powder">White powder on leaves</option>
+ <option value="root_rot">Root rot / black roots</option>
+ <option value="stunted">Stunted growth</option>
+ </select>
+ </div>
+ <button class="btn btn-primary btn-sm" style="width:100%;" onclick="diagnoseCrop()">
+ Diagnose</button>
+ <div id="diagnosisResult" style="margin-top:14px;font-size:0.83rem;display:none;"></div>
+ </div>
+ <div class="sidebar-card">
+ <h3> Today's Tips</h3>
+ <div id="dailyTips"></div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+ <script src="js/main.js"></script>
+ <script src="js/ai.js"></script>
+</body>
+
+</html>

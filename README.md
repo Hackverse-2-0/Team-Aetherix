@@ -29,13 +29,29 @@ To ensure fairness and track your progress, this hackathon features a strict two
 *Please overwrite the information below with your actual project details before the final evaluation.*
 
 ### Team Name: 
-[Enter your team name]
+Team Aetherix
 
 ### Project Name:
-[Enter your project name]
+GoldenField
 
 ### Project Description:
-[Write a brief 1-2 paragraph description of what your project does, the problem it solves, and the technologies used.]
+GOLDENFIELDS is a digital agricultural ecosystem designed to empower farmers by integrating marketplace access, AI-driven guidance, learning resources, and community support into one unified platform.
+
+It enables direct farmer-to-buyer trade, reduces middlemen dependency, provides voice-based AI assistance for crop and price insights, and ensures transparency through traceability and instant payments.
+
+By combining technology, education, and financial access, GOLDENFIELD aims to increase farmers’ income, improve supply chain efficiency, and build a smarter, more sustainable agricultural system in India.
 
 ### Setup & Installation Instructions:
-[Provide clear, step-by-step instructions on how the judges can run your project locally. Include any commands needed to install dependencies and start the application.]
+📌 Tech Stack
+
+Frontend: HTML, CSS, JavaScript
+Database: MongoDB
+
+Authentication: Firebase Authentication
+
+🔧 Prerequisites
+Before running the project, ensure you have:
+MongoDB (Local installation or MongoDB Atlas)
+A Firebase account
+Git
+

@@ -1,3 +1,10 @@
+Team Name : 
+Team Aetherix
+
+Project Name :
+GoldenFields
+
+
 🚜 Project Theme
 
 GoldenField is a Digital Agricultural Ecosystem designed to transform traditional farming into a smart, connected, and profitable system.

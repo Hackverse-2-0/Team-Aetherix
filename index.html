@@ -1,142 +1,531 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <title>GoldenFields — Home</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Merriweather:wght@700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>GoldenFields â India's First Complete Agri Ecosystem</title>
+    <meta name="description"
+        content="GoldenFields empowers Indian farmers with AI-powered marketplace, learning, community, and financial tools. Learn â ¢ Trade â ¢ Connect â ¢ Grow." />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
 
-<header class="header">
-  <div class="container header-inner">
-    
-    <div class="brand" onclick="location.href='index.html'">
-      <img id="logo-img" src="assets/logo-light.svg" alt="GoldenFields" class="logo-img"/>
-      <h1 data-i18n="brand.name">GoldenFields</h1>
+    <!-- Loader -->
+    <div class="page-loader" id="loader">
+        <div class="loader-inner">
+            <div class="loader-logo"><img src="assets/images/Picsart_26-02-23_14-32-02-036.png" alt="GoldenFields"
+                    style="width:64px;height:64px;object-fit:contain;" /></div>
+            <div class="loader-text">GoldenFields</div>
+            <div class="loader-bar">
+                <div class="loader-fill"></div>
+            </div>
+        </div>
     </div>
 
-    <nav class="nav">
-      <a href="index.html" class="active">Home</a>
-      <a href="marketplace.html">Marketplace</a>
-      <a href="community.html">Community</a>
-      <a href="learning.html">Learning Hub</a>
-      <a href="mandi.html">Mandi Locator</a>
-      <a href="auth.html" class="btn-small">Sign in</a>
+    <!-- Toast -->
+    <div class="toast" id="toast"> Action completed!</div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/images/Picsart_26-02-23_14-32-02-036.png" alt="GoldenFields Logo"
+                    class="nav-logo-img" />
+                <span>GoldenFields</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="marketplace.html">Marketplace</a>
+                <a href="ai.html">AI Assistant</a>
+                <a href="learning.html">Learn</a>
+                <a href="community.html">Community</a>
+                <a href="government.html">Government Updates</a>
+            </div>
+            <div class="nav-cta">
+
+                <a href="login.html" class="btn btn-accent btn-sm"
+                    style="padding:10px 28px;font-weight:700;letter-spacing:0.3px;">Login</a>
+            </div>
+            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
     </nav>
 
-    <div class="header-controls">
-      <label class="theme-switch">
-        <input id="theme-toggle" type="checkbox" />
-        <span class="slider"></span>
-      </label>
-
-      <select id="lang-select">
-        <option value="en">EN</option>
-        <option value="od">ଓଡ଼ିଆ</option>
-      </select>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu"
+        style="display:none;position:fixed;top:68px;left:0;right:0;background:var(--primary);z-index:999;padding:20px 24px;border-bottom:1px solid rgba(255,255,255,0.1);">
+        <a href="index.html"
+            style="display:block;color:#fff;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-weight:600;"> 
+            Home</a>
+        <a href="marketplace.html"
+            style="display:block;color:#fff;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-weight:600;">
+            Marketplace</a>
+        <a href="ai.html"
+            style="display:block;color:#fff;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-weight:600;">
+            AI Assistant</a>
+        <a href="learning.html"
+            style="display:block;color:#fff;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-weight:600;">
+            Learning Hub</a>
+        <a href="community.html" style="display:block;color:#fff;padding:10px 0;font-weight:600;"> Community</a>
     </div>
 
-  </div>
-</header>
+    <!-- ==================== HERO ==================== -->
+    <section class="hero">
+        <div class="hero-particles" id="heroParticles"></div>
+        <div class="container hero-grid">
+            <div class="hero-content" data-aos="fade-right">
+                <div class="hero-badge"> #1 Agritech Ecosystem in India</div>
+                <h1>India's First <span>Complete</span><br />Agri Ecosystem</h1>
+                <p class="hero-tagline">Learn &nbsp;&nbsp; Trade &nbsp;&nbsp; Connect &nbsp;&nbsp; Grow
+                </p>
+                <p class="hero-desc">Empowering 140M+ farmers with AI-powered tools, transparent marketplace, and
+                    community-driven knowledge. No middlemen. No exploitation. Just prosperity.</p>
+                <div class="hero-buttons">
+                    <a href="login.html" class="btn btn-accent btn-lg">Join as Farmer</a>
+                    <a href="login.html" class="btn btn-ghost btn-lg">Join as Buyer</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="num" data-count="140">0</div>
+                        <div class="lbl">Million+ Farmers</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="num" data-count="40">0</div>
+                        <div class="lbl">% Income Increase</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="num" data-count="25">0</div>
+                        <div class="lbl">% YoY Growth</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="num" data-count="12">0</div>
+                        <div class="lbl">States Covered</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual" data-aos="fade-left">
+                <div style="position:relative;display:inline-block;">
+                    <div class="hero-image-wrap"><img src="assets/images/Picsart_26-02-23_14-32-02-036.png"
+                            alt="GoldenFields Logo"
+                            style="width:260px;height:260px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.92;" />
+                    </div>
+                    <div class="floating-badge fb-1">
+                        <div class="icon" style="font-size:1.4rem;color:#3A7D44;">+</div>
+                        <div class="info"><strong>Rs. 8,500/qtl</strong><span>Live Rice Price</span></div>
+                    </div>
+                    <div class="floating-badge fb-2">
+                        <div class="icon" style="font-size:1.4rem;font-weight:700;color:#0F3D2E;">AI</div>
+                        <div class="info"><strong>AI Powered</strong><span>Crop Advisor</span></div>
+                    </div>
+                    <div class="floating-badge fb-3">
+                        <div class="icon" style="font-size:1.4rem;font-weight:700;color:#3A7D44;">OK</div>
+                        <div class="info"><strong>Verified</strong><span>Traceability</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>SCROLL DOWN</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
 
-<main>
+    <!-- ==================== STATS STRIP ==================== -->
+    <section class="stats-strip">
+        <div class="container">
+            <div class="stats-inner">
+                <div class="stat-item" data-aos="fade-up">
+                    <div class="stat-num counter" data-count="500000">0</div>
+                    <div class="stat-lbl">Active Farmers</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-num counter" data-count="28">0</div>
+                    <div class="stat-lbl">Crops Listed Daily</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-num counter" data-count="95">0</div>
+                    <div class="stat-lbl">% Satisfaction Rate</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-num counter" data-count="1200">0</div>
+                    <div class="stat-lbl"> Saved from Middlemen</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- HERO -->
-  <section class="hero">
-    <img class="hero-bg" src="assets/pexels-clickon38-30851646.jpg" alt="Hero Background"/>
-    <div class="overlay"></div>
+    <!-- ==================== PROBLEM SECTION ==================== -->
+    <section class="section problem-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">The <span class="highlight">Problems</span> We Solve</h2>
+            <p class="section-subtitle" data-aos="fade-up">The agricultural supply chain is broken. We're fixing it from
+                both ends.</p>
+            <div class="problem-grid">
+                <div class="problem-card farmer" data-aos="fade-right">
+                    <h3>Farmer Problems</h3>
+                    <div class="problem-item">
+                        <div class="problem-icon"></div>
+                        <div><strong>Middlemen eat 30-40%</strong>
+                            <p>Farmers receive only 60-70% of market price due to exploitative intermediaries.</p>
+                        </div>
+                    </div>
+                    <div class="problem-item">
+                        <div class="problem-icon"></div>
+                        <div><strong>No Price Transparency</strong>
+                            <p>Without real-time data, farmers sell cheap while markets sell high.</p>
+                        </div>
+                    </div>
+                    <div class="problem-item">
+                        <div class="problem-icon"></div>
+                        <div><strong>No AI Support</strong>
+                            <p>Zero access to modern advisory tools for crop diseases, weather, or demand.</p>
+                        </div>
+                    </div>
+                    <div class="problem-item">
+                        <div class="problem-icon"></div>
+                        <div><strong>Lack of Knowledge</strong>
+                            <p>Modern techniques and government schemes remain inaccessible to most farmers.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="problem-card buyer" data-aos="fade-left">
+                    <h3>Buyer Problems</h3>
+                    <div class="problem-item">
+                        <div class="problem-icon"></div>
+                        <div><strong>No Quality Assurance</strong>
+                            <p>Buyers can't verify produce quality before purchase, leading to losses.</p>
+                        </div>
+                    </div>
+                    <div class="problem-item">
+                        <div class="problem-icon"></div>
+                        <div><strong>No Traceability</strong>
+                            <p>Farm-to-fork journey is opaque no way to verify source or practices.</p>
+                        </div>
+                    </div>
+                    <div class="problem-item">
+                        <div class="problem-icon"></div>
+                        <div><strong>Delayed Supply Chain</strong>
+                            <p>Multiple intermediaries create bottlenecks, delays, and waste.</p>
+                        </div>
+                    </div>
+                    <div class="problem-item">
+                        <div class="problem-icon"></div>
+                        <div><strong>Unfair Pricing</strong>
+                            <p>Buyers pay inflated rates while farmers earn less a broken equilibrium.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="container hero-content">
-      <div class="hero-badge">
-        🌱 <span data-i18n="hero.badge">Future of Farming is Here</span>
-      </div>
+    <!-- ==================== SOLUTION SECTION ==================== -->
+    <section class="section solution-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Our <span class="highlight">Super Ecosystem</span></h2>
+            <p class="section-subtitle" data-aos="fade-up">Four powerful pillars that transform Indian agriculture from
+                farm to future.</p>
+            <div class="solution-grid">
+                <div class="solution-card" data-aos="fade-up" data-aos-delay="0"
+                    onclick="window.location='marketplace.html'">
+                    <span class="sol-icon"></span>
+                    <div class="sol-title">Marketplace</div>
+                    <div class="sol-desc">Direct farm-to-buyer trading with live price discovery, traceability QR codes,
+                        and zero middlemen.</div>
+                    <div class="sol-arrow"></div>
+                </div>
+                <div class="solution-card" data-aos="fade-up" data-aos-delay="100" onclick="window.location='ai.html'">
+                    <span class="sol-icon"></span>
+                    <div class="sol-title">AI Assistant</div>
+                    <div class="sol-desc">Voice-enabled multilingual crop advisor with real-time price prediction and
+                        disease diagnosis.</div>
+                    <div class="sol-arrow"></div>
+                </div>
+                <div class="solution-card" data-aos="fade-up" data-aos-delay="200"
+                    onclick="window.location='learning.html'">
+                    <span class="sol-icon"></span>
+                    <div class="sol-title">Learning Hub</div>
+                    <div class="sol-desc">Curated courses on organic farming, government schemes, smart irrigation with
+                        certifications.</div>
+                    <div class="sol-arrow"></div>
+                </div>
+                <div class="solution-card" data-aos="fade-up" data-aos-delay="300"
+                    onclick="window.location='community.html'">
+                    <span class="sol-icon"></span>
+                    <div class="sol-title">Community</div>
+                    <div class="sol-desc">Farmer-to-farmer knowledge sharing, expert Q&A, and peer support across 12
+                        states.</div>
+                    <div class="sol-arrow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <h2 class="hero-title" data-i18n-html="hero.title">
-        Cultivating <span class="accent">Prosperity</span> Together
-      </h2>
+    <!-- ==================== PRICE PREDICTION CHART ==================== -->
+    <section class="section chart-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up"> Smart <span class="highlight">Price Prediction</span></h2>
+            <p class="section-subtitle" data-aos="fade-up">AI-powered 6-month price forecasting to help you sell at the
+                right time.</p>
+            <div class="chart-wrap" data-aos="fade-up">
+                <div class="chart-controls">
+                    <button class="chip active" onclick="updateChart('rice',this)"> Rice</button>
+                    <button class="chip" onclick="updateChart('wheat',this)"> Wheat</button>
+                    <button class="chip" onclick="updateChart('tomato',this)"> Tomato</button>
+                    <button class="chip" onclick="updateChart('cotton',this)"> Cotton</button>
+                    <button class="chip" onclick="updateChart('sugarcane',this)"> Sugarcane</button>
+                </div>
+                <canvas id="priceChart" height="100"></canvas>
+            </div>
+        </div>
+    </section>
 
-      <p class="hero-lead" data-i18n="hero.lead"></p>
+    <!-- ==================== BONUS FEATURES ==================== -->
+    <section class="section features-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up"> Powerful <span class="highlight">Tools</span> for Farmers
+            </h2>
+            <p class="section-subtitle" data-aos="fade-up">Beyond marketplace a complete ecosystem of smart tools
+                designed for you.</p>
+            <div class="calc-grid">
 
-      <div class="hero-buttons">
-        <button class="btn btn-primary" onclick="location.href='marketplace.html'">
-          Explore Marketplace
-        </button>
-        <button class="btn btn-outline" onclick="location.href='auth.html'">
-          Join Community
-        </button>
-      </div>
-    </div>
-  </section>
+                <!-- Income Calculator -->
+                <div class="calc-card" data-aos="fade-right">
+                    <h3>Income Growth Calculator</h3>
+                    <div class="form-group">
+                        <label>Select Crop</label>
+                        <select id="calcCrop">
+                            <option value="rice">Rice</option>
+                            <option value="wheat">Wheat</option>
+                            <option value="tomato">Tomato</option>
+                            <option value="cotton">Cotton</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Quantity (Quintals)</label>
+                        <input type="number" id="calcQty" placeholder="e.g. 50" min="1" />
+                    </div>
+                    <div class="form-group">
+                        <label>Your Current Rate (â ¹/qtl)</label>
+                        <input type="number" id="calcRate" placeholder="e.g. 1800" min="0" />
+                    </div>
+                    <button class="btn btn-primary" style="width:100%;" onclick="calcIncome()"> Calculate
+                        Earnings</button>
+                    <div class="result-box" id="incomeResult">
+                        <div class="result-row"><span>Without GoldenFields</span><span class="val"
+                                id="withoutIncome"></span></div>
+                        <div class="result-row"><span>Old Platform Rate</span><span id="midmanPct"></span></div>
+                        <div style="height:12px;margin:4px 0;">
+                            <div class="comparison-bar bar-without" id="barWithout" style="width:0%"></div>
+                        </div>
+                        <div class="result-row"><span> With GoldenFields</span><span class="val" id="withIncome"
+                                style="color:#66bb6a;"></span></div>
+                        <div class="result-row"><span>Full Market Rate</span><span>100%</span></div>
+                        <div style="height:12px;margin:4px 0;">
+                            <div class="comparison-bar bar-with" id="barWith" style="width:0%"></div>
+                        </div>
+                        <div class="result-row"
+                            style="margin-top:8px;border-top:2px solid rgba(255,255,255,0.3);padding-top:12px;">
+                            <span>ðŸŽ Extra Income</span><span class="val" id="extraIncome"
+                                style="font-size:1.2rem;"></span>
+                        </div>
+                    </div>
+                </div>
 
-  <!-- PRICES + WHY -->
-  <section class="section">
-    <div class="container grid grid-2">
+                <!-- Sustainability Tracker -->
+                <div class="calc-card" data-aos="fade-left">
+                    <h3>Sustainability Tracker</h3>
+                    <div class="form-group">
+                        <label>Water Usage (Litres/Acre/Season)</label>
+                        <input type="number" id="waterUsage" placeholder="e.g. 5000" min="0" />
+                    </div>
+                    <div class="form-group">
+                        <label>Fertilizer Usage (Kg/Acre)</label>
+                        <input type="number" id="fertilizerUsage" placeholder="e.g. 80" min="0" />
+                    </div>
+                    <div class="form-group">
+                        <label>Pesticide Usage (L/Acre)</label>
+                        <input type="number" id="pesticideUsage" placeholder="e.g. 5" min="0" />
+                    </div>
+                    <div class="form-group">
+                        <label>Organic Waste Recycled (%)</label>
+                        <input type="number" id="organicPct" placeholder="e.g. 60" min="0" max="100" />
+                    </div>
+                    <button class="btn btn-primary" style="width:100%;" onclick="calcSustainability()"> Calculate
+                        Score</button>
+                    <div class="result-box" id="sustainResult">
+                        <div style="text-align:center;">
+                            <div style="font-size:0.85rem;opacity:0.8;margin-bottom:6px;">Your Sustainability Score
+                            </div>
+                            <div class="sustain-score" id="sustainScore"></div>
+                            <div id="sustainLabel" style="font-size:0.9rem;margin-top:6px;"></div>
+                        </div>
+                        <div id="sustainTips" style="margin-top:16px;font-size:0.82rem;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <div class="card">
-        <h3 data-i18n="prices.title">Mandi Prices Today</h3>
-        <p class="muted" data-i18n="prices.subtitle"></p>
-        <div id="price-chart" class="price-chart"></div>
-        <div id="price-container" class="price-list"></div>
-      </div>
+    <!-- ==================== GOVERNMENT UPDATES SECTION ==================== -->
+    <section class="section gov-updates-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up"> Government <span class="highlight">Updates & Schemes</span></h2>
+            <p class="section-subtitle" data-aos="fade-up">Latest government schemes and support for Indian farmers. Stay informed and benefit from official programs.</p>
+            <div class="gov-updates-list" data-aos="fade-up">
+                <ul style="list-style:none;padding:0;max-width:700px;margin:0 auto;">
+                    <li style="margin-bottom:24px;background:#f8fbe7;border-radius:12px;padding:18px 22px;box-shadow:0 2px 8px #e0f2f1;font-size:1.08rem;">
+                        <span style="font-size:1.5rem;margin-right:8px;">🌾</span>
+                        <b>PM-KISAN (Pradhan Mantri Kisan Samman Nidhi)</b><br>
+                        <span style="color:#388e3c;">₹6,000 per year given to farmers<br>Paid in 3 installments directly to bank account<br>For small and marginal farmers</span>
+                    </li>
+                    <li style="margin-bottom:24px;background:#e3f2fd;border-radius:12px;padding:18px 22px;box-shadow:0 2px 8px #bbdefb;font-size:1.08rem;">
+                        <span style="font-size:1.5rem;margin-right:8px;">💧</span>
+                        <b>PMKSY (Pradhan Mantri Krishi Sinchayee Yojana)</b><br>
+                        <span style="color:#1976d2;">Focus on irrigation facilities<br>“Har Khet Ko Pani” (Water to every field)<br>Promotes drip and sprinkler irrigation</span>
+                    </li>
+                    <li style="margin-bottom:24px;background:#f1f8e9;border-radius:12px;padding:18px 22px;box-shadow:0 2px 8px #c8e6c9;font-size:1.08rem;">
+                        <span style="font-size:1.5rem;margin-right:8px;">🌱</span>
+                        <b>PMFBY (Pradhan Mantri Fasal Bima Yojana)</b><br>
+                        <span style="color:#388e3c;">Crop insurance scheme<br>Farmers pay low premium<br>Compensation for crop loss due to natural disasters</span>
+                    </li>
+                    <li style="margin-bottom:24px;background:#fffde7;border-radius:12px;padding:18px 22px;box-shadow:0 2px 8px #fff9c4;font-size:1.08rem;">
+                        <span style="font-size:1.5rem;margin-right:8px;">🌿</span>
+                        <b>Soil Health Card Scheme</b><br>
+                        <span style="color:#8d6e63;">Farmers get soil testing reports<br>Helps in proper fertilizer use<br>Improves crop productivity</span>
+                    </li>
+                    <li style="margin-bottom:24px;background:#e1f5fe;border-radius:12px;padding:18px 22px;box-shadow:0 2px 8px #b3e5fc;font-size:1.08rem;">
+                        <span style="font-size:1.5rem;margin-right:8px;">🚜</span>
+                        <b>SMAM (Sub-Mission on Agricultural Mechanization)</b><br>
+                        <span style="color:#0277bd;">Subsidy on tractors, tools, and modern equipment<br>Helps small farmers use machines</span>
+                    </li>
+                    <li style="margin-bottom:24px;background:#f3e5f5;border-radius:12px;padding:18px 22px;box-shadow:0 2px 8px #ce93d8;font-size:1.08rem;">
+                        <span style="font-size:1.5rem;margin-right:8px;">🧑‍🌾</span>
+                        <b>e-NAM (National Agriculture Market)</b><br>
+                        <span style="color:#6a1b9a;">Online trading platform for farmers<br>Better price transparency<br>Connects mandis across India</span>
+                    </li>
+                    <li style="margin-bottom:24px;background:#fff8e1;border-radius:12px;padding:18px 22px;box-shadow:0 2px 8px #ffe0b2;font-size:1.08rem;">
+                        <span style="font-size:1.5rem;margin-right:8px;">🌾</span>
+                        <b>PM Kisan Maandhan Yojana</b><br>
+                        <span style="color:#ff9800;">Pension scheme for small farmers<br>₹3,000 monthly pension after 60 years</span>
+                    </li>
+                    <li style="margin-bottom:24px;background:#fbe9e7;border-radius:12px;padding:18px 22px;box-shadow:0 2px 8px #ffccbc;font-size:1.08rem;">
+                        <span style="font-size:1.5rem;margin-right:8px;">🐄</span>
+                        <b>Rashtriya Gokul Mission</b><br>
+                        <span style="color:#d84315;">Improvement of indigenous cattle breeds<br>Support for dairy farmers</span>
+                    </li>
+                    <li style="margin-bottom:24px;background:#e8f5e9;border-radius:12px;padding:18px 22px;box-shadow:0 2px 8px #c8e6c9;font-size:1.08rem;">
+                        <span style="font-size:1.5rem;margin-right:8px;">🏦</span>
+                        <b>Kisan Credit Card (KCC)</b><br>
+                        <span style="color:#388e3c;">Easy loan for farmers<br>Low interest rate<br>Helps in buying seeds, fertilizers, etc.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-      <div class="card why-card">
-        <h3 data-i18n="why.title">Why GoldenFields?</h3>
-        <ul>
-          <li data-i18n="why.secure"></li>
-          <li data-i18n="why.rates"></li>
-          <li data-i18n="why.ai"></li>
-        </ul>
-      </div>
+    <!-- ==================== WEATHER SECTION ==================== -->
+    <section class="section weather-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up"> Weather <span class="highlight">Alert System</span></h2>
+            <p class="section-subtitle" data-aos="fade-up">Hyperlocal weather intelligence select your district for
+                real-time alerts.</p>
+            <div class="weather-card" data-aos="fade-up">
+                <div class="form-group" style="max-width:320px;margin:0 auto 20px;">
+                    <label style="font-weight:600;color:var(--primary);">Select Your District</label>
+                    <select id="districtSelect" onchange="showWeather()" style="margin-top:8px;">
+                        <option value=""> Choose District </option>
+                        <option value="bhubaneswar">Bhubaneswar (Odisha)</option>
+                        <option value="puri">Puri (Odisha)</option>
+                        <option value="lucknow">Lucknow (UP)</option>
+                        <option value="patna">Patna (Bihar)</option>
+                        <option value="jaipur">Jaipur (Rajasthan)</option>
+                        <option value="nashik">Nashik (Maharashtra)</option>
+                        <option value="guntur">Guntur (Andhra Pradesh)</option>
+                        <option value="mysore">Mysore (Karnataka)</option>
+                    </select>
+                </div>
+                <div id="weatherDisplay" style="display:none;">
+                    <div class="weather-icon" id="weatherIcon"></div>
+                    <h3 id="weatherTitle" style="color:var(--primary);margin-bottom:6px;"></h3>
+                    <p id="weatherTemp"
+                        style="font-size:1.5rem;font-weight:700;color:var(--accent);margin-bottom:20px;"></p>
+                    <div class="weather-alerts" id="weatherAlerts"></div>
+                </div>
+                <div id="weatherPlaceholder" style="padding:30px;color:var(--text-mid);">
+                    <div style="font-size:3rem;"></div>
+                    <p style="margin-top:12px;">Select your district to see personalized weather alerts and farming
+                        advisories.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- ==================== CTA ==================== -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 data-aos="fade-up">Ready to <span style="color:var(--accent)">Transform</span> Your Farm?</h2>
+            <p data-aos="fade-up">Join hundreds of thousands of farmers who are already earning more, wasting less, and
+                growing stronger with GoldenFields.</p>
+            <div class="cta-buttons" data-aos="fade-up">
+                <a href="login.html" class="btn btn-accent btn-lg">Get Started Free</a>
+                <a href="ai.html" class="btn btn-ghost btn-lg"> Try AI Assistant</a>
+                <a href="community.html" class="btn btn-ghost btn-lg"> Join Community</a>
+            </div>
+        </div>
+    </section>
 
-  <!-- FEATURES -->
-  <section class="section section-accent">
-    <div class="container grid grid-2 align-center">
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo"><img src="assets/images/Picsart_26-02-23_14-32-02-036.png" alt="GoldenFields"
+                            style="height:36px;object-fit:contain;vertical-align:middle;margin-right:8px;" />GoldenFields
+                    </div>
+                    <p>India's first complete agri ecosystem connecting farmers, buyers, and technology. Empowering
+                        rural India, one harvest at a time.</p>
+                    <div class="social-links" style="margin-top:20px;">
+                        <a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Platform</h4>
+                    <a href="marketplace.html"> Marketplace</a>
+                    <a href="ai.html"> AI Assistant</a>
+                    <a href="learning.html"> Learning Hub</a>
+                    <a href="community.html"> Community</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <a href="#">Govt Schemes</a>
+                    <a href="#">Weather Alerts</a>
+                    <a href="#">Price History</a>
+                    <a href="#">Farmer Blog</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <a href="#">About Us</a>
+                    <a href="#">Our Mission</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Terms & Privacy</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p> 2025 GoldenFields. Made with for Indian Farmers.</p>
+                <p style="font-size:0.78rem;color:rgba(255,255,255,0.4);"> Hackathon Finalist Smart Agri 2025
+                </p>
+            </div>
+        </div>
+    </footer>
 
-      <div>
-        <img class="feature-img"
-          src="https://images.unsplash.com/photo-1506806732259-39c2d0268443?auto=format&fit=crop&w=1200&q=80" />
-
-        <div class="feature-quote" data-i18n="features.quote"></div>
-      </div>
-
-      <div>
-        <h2 data-i18n-html="features.title"></h2>
-        <p class="muted" data-i18n="features.lead"></p>
-
-        <button class="btn btn-primary mt-16"
-          onclick="location.href='marketplace.html'">
-          Start Selling →
-        </button>
-      </div>
-
-    </div>
-  </section>
-
-</main>
-
-<footer class="footer">
-  <div class="container footer-bottom">
-    <div>© 2025 GoldenFields</div>
-    <div class="footer-links-inline">
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-    </div>
-  </div>
-</footer>
-
-<script src="js/data.js"></script>
-<script src="js/i18n.js"></script>
-<script src="js/script.js"></script>
-<script src="js/theme-lang.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="js/main.js"></script>
 </body>
+
 </html>
